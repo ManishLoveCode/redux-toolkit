@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
-import { counterActions } from "../store/index";
 import { useRef } from "react";
+import { counterActions } from "../store/counterSlice";
+import { privacyActions } from "../store/privacySlice";
 
 const Controls = () => {
   const dispatch = useDispatch();
@@ -29,14 +30,35 @@ const Controls = () => {
       })
     );
   };
+
+  const handlePrivacyToggle = () => {
+    dispatch(privacyActions.toggle());
+  };
   return (
     <>
-      <button onClick={handleIncrement}>Increment++</button>
-      <button onClick={handleDecrement}>Decrement--</button>
+      <input className="val-input" type="number" ref={inputElement} placeholder="Enter Number" />
       <br />
-      <button onClick={handleAdd}>addValue</button>
-      <input type="number" ref={inputElement} />
-      <button onClick={handleSubtract}>subtractValue</button>
+      <div className="btn-gap">
+        <button className="inc-btn" onClick={handleAdd}>
+          addValue
+        </button>
+        <button className="dec-btn" onClick={handleSubtract}>
+          subtractValue
+        </button>
+      </div>
+      <br />
+
+      <div>
+        <button className="inc-btn" onClick={handleIncrement}>
+          Increment++
+        </button>
+        <button className="privacy-btn" onClick={handlePrivacyToggle}>
+          privacyToggle
+        </button>
+        <button className="dec-btn" onClick={handleDecrement}>
+          Decrement--
+        </button>
+      </div>
     </>
   );
 };

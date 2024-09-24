@@ -4,7 +4,10 @@ const DisplayCounter = () => {
   const { counterVal } = useSelector((store) => store.counter);
   return (
     <div>
-      <p>Counter current value: {counterVal}</p>
+      <h2>
+        Counter current value:{" "}
+        <span style={{ color: "yellow" }}>{counterVal}</span>
+      </h2>
     </div>
   );
 };
